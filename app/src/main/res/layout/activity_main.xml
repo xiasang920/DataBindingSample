@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!--data标签:需要绑定的数据全在这里定义
+        variable标签：定义一个变量。
+        name属性：变量名    type属性：变量类型
+        这句话的意思是，将java代码中实例化后的UserBean对象通过Binding实例绑定到当前XML
+    -->
+    <data>
+        <import type="java.lang.String"/>
+
+        <variable
+            name="user"
+            type="com.sample.beans.UserBean"/>
+        <variable
+            name="presenter"
+            type="com.sample.ui.MainActivity.EventPresenter"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.sample.ui.MainActivity">
+        <!--@{user.name}表达式：将user对象里的name属性值取出并设置给这个textview，以下同义-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{user.name}" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(user.age)}" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.sex}" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{presenter.onClick}"
+            android:text="@{user.job}" />
+    </LinearLayout>
+</layout>
